@@ -7,18 +7,27 @@
 		Hangman Game
 	</title>
 </head>
-<body>
+<body onload="startFunction()">
 <header>
-	<h1>
+	<h1 id="nameofsong">
 		90's Theme Hangman
 	</h1>
 </header>
 <section>
-	<div class="content">
-		<img id="myImages" src="images/nirvana.jpg">
+	<div>
+		<img id="imagecontent" id="myImages" src="images/nirvana.jpg">
 	</div>
 	<div>
-		
+		<p id="numberofchar"></p>
+		<p id="blanks"></p>
+	</div>
+	<div>
+		<p>
+			User: 0
+		</p>
+		<p>
+			Computer: 0
+		</p>
 	</div>
 </section>
 </body>
