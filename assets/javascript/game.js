@@ -7,18 +7,41 @@ var songs = ["Nirvana", "Green Day", "Blink 182", "Red Hot Chili Pepers", "Smach
 var randomImage = images[Math.floor(Math.random() * images.length)];
 var randomSong = songs[Math.floor(Math.random() * songs.length)];
 
+//starting the game
+
 function startFunction(){
 	var empty = []
 	for (var i = 0; i < randomSong.length; i++) {
 	empty.push(" _ ");
 	};
 
-document.getElementById("numberofchar").innerHTML = randomSong.length;
-document.getElementById("nameofsong").innerHTML = randomSong;
-document.getElementById("blanks").innerHTML = empty.join(" ");
+	document.getElementById("numberofchar").innerHTML = randomSong.length;
+	document.getElementById("nameofsong").innerHTML = randomSong;
+	document.getElementById("blanks").innerHTML = empty.join(" ");
 
-document.getElementById("imagecontent").src = randomImage;
+	var forImage = randomSong.charAt(0);
+
+	if (forImage === "N"){
+		document.getElementById("imagecontent").src = images[0];
+	} else if (forImage === "G") {
+		document.getElementById("imagecontent").src = images[1];
+	} else if (forImage === "B"){
+		document.getElementById("imagecontent").src = images[2];
+	} else if (forImage === "R"){
+		document.getElementById("imagecontent").src = images[3];
+	} else if (forImage === "S"){
+		document.getElementById("imagecontent").src = images[4];
+
+	};
 };
+
+//get letters to appear in the game
+
+
+
+
+
+
 
 
 
