@@ -7,13 +7,20 @@ var songs = ["Nirvana", "Green Day", "Blink 182", "Red Hot Chili Pepers", "Smach
 var randomImage = images[Math.floor(Math.random() * images.length)];
 var randomSong;
 var empty;
-
+var count = 0
+var wins = 0
+var letterArray = new Array
 
 
 
 function updateHtml(){
 	document.getElementById("blanks").innerHTML = empty.join(" ");
-}
+};
+
+function updateNumber(){
+	document.getElementById("numberofchar").innerHTML = randomSong.length;
+
+};
 //starting the game
 
 function startFunction(){
@@ -26,7 +33,7 @@ function startFunction(){
 
 
 	updateHtml()
-	document.getElementById("numberofchar").innerHTML = randomSong.length;
+	updateNumber()
 	document.getElementById("nameofsong").innerHTML = randomSong;
 
 	var forImage = randomSong.charAt(0);
@@ -51,28 +58,23 @@ function startFunction(){
 
 	
 	document.onkeyup = function gameFunction (event) {
-		function counter(){
-			var count = 0
-	for (var i = 0; i < lowerCaseRandomSong.length; i++){
-		if (i <= count){
-			count++
-		} else{
-			startFunction()
-		}
 
-	}
-	
-}
 		var user = String.fromCharCode(event.keyCode).toLowerCase(); 
 		var lowerCaseRandomSong = randomSong.toLowerCase();
 		var indexSong = lowerCaseRandomSong.indexOf(user);
+
 
 
 		if (indexSong > -1){
 			for (var i = 0; i < lowerCaseRandomSong.length; i++){
 				if (lowerCaseRandomSong[i] === user){
 					empty[i] = user;
+					updateNumber();
 					console.log(empty);
+				}
+				if (lowerCaseRandomSong[i] === " "){
+					empty[i] = " ";
+					
 				}
 			}
 
@@ -84,8 +86,27 @@ function startFunction(){
 				console.log(chances);
 				}
 		updateHtml();
-		counter();
 
+		count++
+		if (lowerCaseRandomSong.length === count){
+			startFunction()
+			count = 0
+			chances = 0
+		}
+		if (lowerCaseRandomSong.indexOf("_") === -1){
+			wins++
+
+
+		}
+		if(lowerCaseRandomSong.indexOf(user) === -1){
+
+			letterArray.push(user);
+			document.getElementById("letters").innerHTML = letterArray;
+			document.getElementById("numberofchar").innerHTML = lowerCaseRandomSong.length;
+			lowerCaseRandomSong.length--
+
+		}
+		
 	};
 	
 
@@ -94,7 +115,16 @@ function startFunction(){
 
 
 
+// 	for (var i = 0; i < lowerCaseRandomSong.length; i++){
+// 		if (i <= count){
+// 			count++
+// 		} else{
+// 			startFunction()
+// 		}
 
+// 	}
+	
+// }
 
 
 
